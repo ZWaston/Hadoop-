@@ -1,0 +1,12 @@
+先清空/M下的所有文件：
+hadoop fs -rm -r /M
+然后依次执行以下命令：
+hadoop jar NB.jar com.waston.bayes.SequenceFileWriter ./trainset /M/trainset/data
+hadoop jar NB.jar com.waston.bayes.SequenceFileWriter ./testset/ /M/testset/data
+hadoop jar NB.jar com.waston.bayes.FirstMR /M/trainset/data /M/FirstMR
+hadoop jar NB.jar com.waston.bayes.SecondMR /M/FirstMR /M/SecondMR
+hadoop jar NB.jar com.waston.bayes.ThirdMR /M/FirstMR /M/ThirdMR
+hadoop jar NB.jar com.waston.bayes.FourthMR /M/trainset /M/FourthMR
+hadoop jar NB.jar com.waston.bayes.FifthMR /M/FirstMR /M/SecondMR /M/ThirdMR /M/FourthMR /M/testset /M/result
+hadoop jar NB.jar com.waston.bayes.Evaluation /M/testset /M/Evaluation/output1 /M/result /M/Evaluation/output2
+
